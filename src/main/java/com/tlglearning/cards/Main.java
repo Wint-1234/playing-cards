@@ -10,7 +10,8 @@ public class Main {
 
   public static void main(String[] args) {
 
-    class ColorFirst implements Comparator<Card> {
+    Comparator<Card> comparator = new Comparator<>() {
+
       @Override
       public int compare(Card card1, Card card2) {
         int comparison = card1.suit().color().compareTo(card2.suit().color());
@@ -22,7 +23,7 @@ public class Main {
         }
         return comparison;
       }
-    }
+    };
 
     Deck deck = new Deck();
     System.out.println(deck);
@@ -31,7 +32,7 @@ public class Main {
     System.out.println(deck);
     deck.sort();
     System.out.println(deck);
-    deck.sort(new ColorFirst());
+    deck.sort(comparator);
     System.out.println(deck);
   }
 
